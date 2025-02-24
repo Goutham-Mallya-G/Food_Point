@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "This is were i learn react from aksay saini",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,7 @@
     "process": "^0.11.10"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }

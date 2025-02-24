@@ -1,18 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
+//react element
+const heading = <h1 id="heading">Hello world from JSX</h1>;
+//react component
+const Compo = () => <h1>Hello from the functional components</h1>;
 
- const parent = React.createElement("div" , {id : "parent"} , [
-    React.createElement("div", {id : "child"} , [
-        React.createElement("h1",{},"Im the h1 tag"),
-        React.createElement("h2",{},"Im the h2 tag"),
-    ]),
-    React.createElement("div", {id : "child2"} , [
-        React.createElement("h1",{},"Im the h1 tag"),
-        React.createElement("h2",{},"Im the h2 tag"),
-    ])
- ]) ;
+const Compo2 = () => (
+    <>
+        <Compo />
+        <h1> Hello from compo 2</h1>
+    </>
+)
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
- console.log(parent);
- const container = document.getElementById("root");
- const root = ReactDOM.createRoot(container);
- root.render(parent);
+root.render(<Compo2 />);
