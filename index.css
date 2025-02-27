@@ -6,7 +6,7 @@
 /*Header*/
 .header{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -32,8 +32,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:20px;
-    margin-bottom: -10px;
 }
 .search-logo{
     display: flex;
@@ -71,6 +69,32 @@
 .search-logo img{
     width: 80%;
 }
+
+.body-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid #838383;
+    padding: 10px ;
+    background-color: rgb(219, 218, 218);
+}
+
+.filter:hover{
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
 .res-card{
     border-radius: 15px;
     margin: 30px;
