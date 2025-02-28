@@ -7,6 +7,10 @@ import { useState, useEffect } from "react";
 const Body = () => {
   const [kadaigal, setKadaigal] = useState([]);
 
+  const [searchtext, setsearchtext] = useState("");
+
+  const [filteredkadaigal , setfilteredkadaigal] = useState([]);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -17,8 +21,10 @@ const Body = () => {
     );
 
     const json = await data.json();
-    console.log(json);
     setKadaigal(
+      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
+    );
+    setfilteredkadaigal(
       json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     );
   };
@@ -31,8 +37,23 @@ const Body = () => {
             type="text"
             className="search-input"
             placeholder="Search here..."
+            value = {searchtext}
+            onChange={(e) => {
+              setsearchtext(e.target.value)
+              const filteredkadaigal = kadaigal.filter((res) => 
+                res.info.name.toLowerCase().includes(searchtext));
+  
+                setfilteredkadaigal(filteredkadaigal);
+            }}
           ></input>
-          <button className="search-logo">
+          <button 
+            className="search-logo"
+            onClick={() => {
+              const filteredkadaigal = kadaigal.filter((res) => 
+              res.info.name.toLowerCase().includes(searchtext));
+
+              setfilteredkadaigal(filteredkadaigal);
+            }}>
             <img src={SEARCH_URL} />
           </button>
         </div>
@@ -58,7 +79,7 @@ const Body = () => {
         </div>
       ) : (
         <div className="res-container">
-          {kadaigal.map((restaurent) => (
+          {filteredkadaigal.map((restaurent) => (
             <RestaurantCard key={restaurent.info.id} resData={restaurent} />
           ))}
         </div>

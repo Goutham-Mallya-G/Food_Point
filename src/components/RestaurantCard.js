@@ -2,9 +2,6 @@ import { RES_LOGO_URL } from "../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
-  if (!resData || !resData.info) {
-    return <div></div>; // Prevents TypeError
-  }
   const { name, cuisines, sla, avgRating, cloudinaryImageId } = resData?.info;
   return (
     <div className="res-card">
