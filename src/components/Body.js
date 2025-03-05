@@ -3,22 +3,21 @@ import RestaurantCard from "./RestaurantCard";
 import { schimmercard } from "./schimmer";
 import { Schimmer } from "./schimmer";
 import { useState, useEffect } from "react";
+import { API } from "../utils/constants";
 
 const Body = () => {
   const [kadaigal, setKadaigal] = useState([]);
 
   const [searchtext, setsearchtext] = useState("");
 
-  const [filteredkadaigal , setfilteredkadaigal] = useState([]);
+  const [filteredkadaigal, setfilteredkadaigal] = useState([]);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.0168445&lng=76.9558321&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING  "
-    );
+    const data = await fetch(API);
 
     const json = await data.json();
     setKadaigal(
@@ -37,23 +36,26 @@ const Body = () => {
             type="text"
             className="search-input"
             placeholder="Search here..."
-            value = {searchtext}
+            value={searchtext}
             onChange={(e) => {
-              setsearchtext(e.target.value)
-              const filteredkadaigal = kadaigal.filter((res) => 
-                res.info.name.toLowerCase().includes(searchtext));
-  
-                setfilteredkadaigal(filteredkadaigal);
+              setsearchtext(e.target.value);
+              const filtering = kadaigal.filter((res) =>
+                res.info.name.toLowerCase().includes(searchtext)
+              );
+
+              setfilteredkadaigal(filtering);
             }}
           ></input>
-          <button 
+          <button
             className="search-logo"
             onClick={() => {
-              const filteredkadaigal = kadaigal.filter((res) => 
-              res.info.name.toLowerCase().includes(searchtext));
+              const filtering = kadaigal.filter((res) =>
+                res.info.name.toLowerCase().includes(searchtext)
+              );
 
-              setfilteredkadaigal(filteredkadaigal);
-            }}>
+              setfilteredkadaigal(filtering);
+            }}
+          >
             <img src={SEARCH_URL} />
           </button>
         </div>
