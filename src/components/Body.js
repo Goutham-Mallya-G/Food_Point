@@ -1,9 +1,10 @@
 import { SEARCH_URL } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
-import { schimmercard } from "./schimmer";
-import { Schimmer } from "./schimmer";
+import { schimmercard } from "./Schimmer";
+import { Schimmer } from "./Schimmer";
 import { useState, useEffect } from "react";
 import { API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [kadaigal, setKadaigal] = useState([]);
@@ -80,9 +81,11 @@ const Body = () => {
           })}
         </div>
       ) : (
-        <div className="res-container">
+        <div className="bodycontainer">
           {filteredkadaigal.map((restaurent) => (
-            <RestaurantCard key={restaurent.info.id} resData={restaurent} />
+            <Link to={"/res/" + restaurent.info.id} className="res-container"  key={restaurent.info.id}>
+              <RestaurantCard resData={restaurent} /> 
+            </Link>
           ))}
         </div>
       )}
