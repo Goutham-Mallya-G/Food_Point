@@ -7,7 +7,7 @@ import Error from "./src/components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Contact from "./src/components/Contact";
 import Cart from "./src/components/Cart";
-import { Menuschimmer } from "./src/components/RestaurantMenu";
+import { Menuschimmer, RestaurantMenu } from "./src/components/RestaurantMenu";
 
 const Main = () => {
   return (
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       element:<Cart/>
 ,    },{
       path : "/res/:resId",
-      element:<Menuschimmer/>
+      element:<RestaurantMenu/>
     }
     ],
     errorElement:<Error/>,
