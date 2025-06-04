@@ -1,7 +1,7 @@
 import { SchimmerMenu, schimmerMenuCard } from "./Schimmer";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MENU, foodPic } from "../utils/constants";
+import { MENU, foodPic , foodError} from "../utils/constants";
 
 export const RestaurantMenu = () => {
   const [resInfo, setResinfo] = useState(null);
@@ -31,17 +31,8 @@ export const RestaurantMenu = () => {
     );
 
   const { name, cuisines, avgRating } = resInfo?.cards[2]?.card?.card?.info;
-  let i = 1;
-  for (i = 1; i < 3; i++) {
-    if (
-      resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[i]?.card
-        ?.card.title === "Recommended"
-    ) {
-      break;
-    }
-  }
-  const { itemCards } =
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[i]?.card?.card;
+
+  const menuCards  = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((section) => section?.card.card.itemCards);
 
   return (
     <div className="resmenudata">
@@ -52,19 +43,27 @@ export const RestaurantMenu = () => {
       </div>
       <div className="resmenulist">
         <ul>
-          {itemCards.map((item) => (
-            <div className="menuName">
+          {menuCards.map((section) => (
+            <div className="menu">
+              <h3 className="title">{section?.card?.card?.title}</h3>
               <ul>
-                <li id="menuDish">{item?.card?.info?.name}</li>
-                <li id="menuListDes">{item?.card?.info?.description}</li>
-                <li id="menuRate">₹{item?.card?.info?.price / 100}</li>
+                {section?.card?.card?.itemCards.map((item) => (
+                  <div className="dishInfo" key = {item?.card?.card?.info?.id}>
+                    <ul>
+                      <li id="dishName">{item?.card?.info?.name}</li>
+                      <li id="dishDes">{item?.card?.info?.description}</li>
+                      <li id="dishRate">₹{item?.card?.info?.finalPrice / 100 || item?.card?.info?.price / 100 || item?.card?.info?.defaultPrice / 100}</li>
+                    </ul>
+                    <div className="menuPicContainer">
+                      <img
+                        className="menuPic"
+                        src={item?.card?.info?.imageId ?(foodPic + item?.card?.info?.imageId): foodError}
+                      />
+                    </div>
+                  </div>
+                ))}
+                
               </ul>
-              <div className="menuPicContainer">
-                <img
-                  className="menuPic"
-                  src={foodPic + item?.card?.info?.imageId}
-                />
-              </div>
             </div>
           ))}
         </ul>

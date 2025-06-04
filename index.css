@@ -298,7 +298,7 @@
     width: 1000px;
 }
 
-.menuName{
+.dishInfo{
     background-color: #eeee;
     height: 200px;
     width : 1000px;
@@ -309,23 +309,23 @@
     border-radius: 10px;
 }
 
-#menuDish{
+#dishName{
     font-size: larger;
     font-weight: 600;
 }
-#menuListDes{
+#dishDes{
     width: 700px;
 }
-#menuRate{
+#dishRate{
     font-weight: 800;
 }
 
-.menuName ul {
+.dishInfo ul {
     list-style: none;
     margin-left: 20px;
 }
 
-.menuName ul li{
+.dishInfo ul li{
     margin-top: 10px;
     width: 100%;
 }
