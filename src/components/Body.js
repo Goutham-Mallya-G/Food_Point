@@ -42,7 +42,7 @@ const Body = () => {
             onChange={(e) => {
               setsearchtext(e.target.value);
               const filtering = kadaigal.filter((res) =>
-                res.info.name.toLowerCase().includes(searchtext)
+                res.info.name.toLowerCase().includes(e.target.value.toLowerCase())
               );
 
               setfilteredkadaigal(filtering);
@@ -68,7 +68,7 @@ const Body = () => {
               const filteredkadaigal = kadaigal.filter(
                 (res) => res.info.avgRating >= 4.5
               );
-              setKadaigal(filteredkadaigal);
+              setfilteredKadaigal(filteredkadaigal);
             }}
           >
             Top Rated
