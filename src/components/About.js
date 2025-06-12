@@ -1,4 +1,4 @@
-import UserClass from "./UserClass";
+import {UserClass} from "./UserClass";
 const About = () => {
     return (
         <div>

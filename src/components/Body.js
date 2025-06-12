@@ -2,41 +2,28 @@ import { SEARCH_URL } from "../utils/constants";
 import RestaurantCard from "./RestaurantCard";
 import { schimmercard } from "./Schimmer";
 import { Schimmer } from "./Schimmer";
-import { useState, useEffect } from "react";
-import { API } from "../utils/constants";
+import useBody from "../utils/useBody";
 import { Link } from "react-router-dom"; 
-
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
-  const [kadaigal, setKadaigal] = useState([]);
 
-  const [filteredkadaigal, setfilteredkadaigal] = useState([]);
+const {
+  kadaigal, filteredkadaigal,searchtext,setsearchtext,setfilteredkadaigal
+} = useBody();
 
-  const [searchtext, setsearchtext] = useState("");
+  const isOnline = useOnlineStatus();
 
-  useEffect(() => {
-    fetchData();
-  },[]);
-
-  const fetchData = async () => {
-    const data = await fetch(API);
-
-    const json = await data.json();
-    setKadaigal(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setfilteredkadaigal(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
-
-
+  if(isOnline === false)
+    return(
+      <h1>Looks like you are offline</h1>
+    )
   return (
-    <div className="body">
-      <div className="body-top">
-        <div className="search-bar">
+    <div className="bg-[#F4F4F2]">
+      <div className="flex flex-wrap justify-evenly items-center pt-4">
+        <div className="flex justify-center items-center">
           <input
             type="text"
-            className="search-input"
+            className="border border-gray-300 m-1 rounded-2xl px-4 py-1 shadow focus:outline-[#E23744]"
             placeholder="Search here..."
             value={searchtext}
             onChange={(e) => {
@@ -49,7 +36,7 @@ const Body = () => {
             }}
           ></input>
           <button
-            className="search-logo"
+            className="w-5"
             onClick={() => {
               const filtering = kadaigal.filter((res) =>
                 res.info.name.toLowerCase().includes(searchtext)
@@ -63,12 +50,12 @@ const Body = () => {
         </div>
         <div>
           <button
-            className="filter"
+            className="border border-[#E23744] rounded-2xl px-4 py-1 text-[#E23744] hover:bg-[#E23744] hover:text-white transition duration-300"
             onClick={() => {
               const filteredkadaigal = kadaigal.filter(
                 (res) => res.info.avgRating >= 4.5
               );
-              setfilteredKadaigal(filteredkadaigal);
+              setfilteredkadaigal(filteredkadaigal);
             }}
           >
             Top Rated
@@ -76,13 +63,13 @@ const Body = () => {
         </div>
       </div>
       {kadaigal.length === 0 ? (
-        <div className="schimmerContainer">
+        <div className="flex flex-wrap justify-center">
           {schimmercard.map((card) => {
             return <Schimmer key={card} />;
           })}
         </div>
       ) : (
-        <div className="bodycontainer">
+        <div className="flex flex-wrap justify-center">
           {filteredkadaigal.map((restaurent) => (
             <Link to={"/res/" + restaurent.info.id} className="res-container"  key={restaurent.info.id}>
               <RestaurantCard resData={restaurent} /> 

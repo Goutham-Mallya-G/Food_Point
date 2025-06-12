@@ -1,20 +1,11 @@
 import { SchimmerMenu, schimmerMenuCard } from "./Schimmer";
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { MENU, foodPic , foodError} from "../utils/constants";
+import { foodPic , foodError} from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu"
 
 export const RestaurantMenu = () => {
-  const [resInfo, setResinfo] = useState(null);
   const { resId } = useParams();
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(MENU + resId);
-    const json = await data.json();
-    setResinfo(json.data);
-  };
+  const resInfo = useRestaurantMenu(resId);
 
   if (resInfo === null)
     return (
@@ -62,7 +53,6 @@ export const RestaurantMenu = () => {
                     </div>
                   </div>
                 ))}
-                
               </ul>
             </div>
           ))}

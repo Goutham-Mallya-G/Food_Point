@@ -26,9 +26,12 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.10",
+    "autoprefixer": "^10.4.21",
     "parcel": "^2.13.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^6.30.1"
+    "react-router-dom": "^6.30.1",
+    "tailwindcss": "^4.1.10"
   }
 }
