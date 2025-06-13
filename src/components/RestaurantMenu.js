@@ -10,10 +10,17 @@ export const RestaurantMenu = () => {
   if (resInfo === null)
     return (
       <div className="bg-purple-50 py-8">
-        
+        <div className="max-w-3xl p-6 bg-white m-auto rounded-2xl shadow-2xl">
+          <div className="mb-10">
+            <h3 className="h-9 max-w-2/3 m-auto bg-[#F4F4F2] rounded-md mb-2"></h3>
+            <h4 className="h-5 max-w-2/6 m-auto bg-[#F4F4F2] rounded-md mb-2"></h4>
+            <h4 className="h-5 max-w-1/6 m-auto bg-[#F4F4F2] rounded-md"></h4>
+          </div>
+          <h4 className="h-6 w-1/3 bg-[#F4F4F2] rounded-2xl mb-2"></h4>
         {schimmerMenuCard.map((list) => {
           return <SchimmerMenu key={list} />;
         })}
+        </div>
       </div>
     );
 

@@ -18,11 +18,11 @@ export const SchimmerMenu = () => {
   return (
     <div className="flex items-start justify-between bg-purple-50 rounded-2xl mb-6 p-6 shadow-md animate-pulse">
       <div className="flex-1">
-        <div className="h-6 bg-gray-200 rounded mb-2 w-1/2"></div>   {/* Dish name */}
-        <div className="h-4 bg-gray-200 rounded mb-4 w-3/4"></div>   {/* Description */}
-        <div className="h-5 bg-gray-200 rounded w-1/6"></div>        {/* Price */}
+        <div className="h-6 bg-gray-200 rounded mb-2 w-1/2"></div>
+        <div className="h-4 bg-gray-200 rounded mb-4 w-3/4"></div>
+        <div className="h-5 bg-gray-200 rounded w-1/6"></div>
       </div>
-      <div className="ml-6 flex items-center">
+      <div className="ml-6">
         <div className="w-28 h-28 bg-gray-200 rounded-xl border border-gray-200 shadow"></div>
       </div>
     </div>
