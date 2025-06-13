@@ -15,17 +15,18 @@ export const Schimmer = () =>{
 export const schimmercard = [1,2,3,4,5,6,7,8,9,10,11,12];
 
 export const SchimmerMenu = () => {
-    return(
-        <div className="schimmerMenuContainer"> 
-            <div className="schimmerMenu">
-                <div className="nameschimmermenu"></div>
-                <div className="rateschimmermenu"></div>
-                <div className="starschimmermenu"></div>
-            </div>
-            <div className="schimmerMenuImage"></div>
-        </div>
+  return (
+    <div className="flex items-start justify-between bg-purple-50 rounded-2xl mb-6 p-6 shadow-md animate-pulse">
+      <div className="flex-1">
+        <div className="h-6 bg-gray-200 rounded mb-2 w-1/2"></div>   {/* Dish name */}
+        <div className="h-4 bg-gray-200 rounded mb-4 w-3/4"></div>   {/* Description */}
+        <div className="h-5 bg-gray-200 rounded w-1/6"></div>        {/* Price */}
+      </div>
+      <div className="ml-6 flex items-center">
+        <div className="w-28 h-28 bg-gray-200 rounded-xl border border-gray-200 shadow"></div>
+      </div>
+    </div>
+  );
+};
 
-    )
-}
-
-export const schimmerMenuCard = [1,2,3,4];
+export const schimmerMenuCard = [1, 2, 3, 4, 5, 6];
