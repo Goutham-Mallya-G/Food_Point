@@ -8,6 +8,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Contact from "./src/components/Contact";
 import Cart from "./src/components/Cart";
 import {RestaurantMenu } from "./src/components/RestaurantMenu";
+import "dotenv/config";
+
 
 const Main = () => {
   return (
