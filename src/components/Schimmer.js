@@ -23,10 +23,10 @@ export const SchimmerMenu = () => {
         <div className="h-5 bg-gray-200 rounded w-1/6"></div>
       </div>
       <div className="ml-6">
-        <div className="w-28 h-28 bg-gray-200 rounded-xl border border-gray-200 shadow"></div>
+        <div className="w-35 h-35 bg-gray-200 rounded-xl border border-gray-200 shadow"></div>
       </div>
     </div>
   );
 };
 
-export const schimmerMenuCard = [1, 2, 3, 4, 5, 6];
+export const schimmerMenuCard = [1, 2, 3, 4, 5, 6]; 
