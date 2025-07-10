@@ -13,7 +13,8 @@ const useBody = () => {
   },[]);
 
   const fetchData = async () => {
-    const data = await fetch(API);
+    try {
+      const data = await fetch(API);
 
     const json = await data.json();
     setKadaigal(
@@ -22,6 +23,10 @@ const useBody = () => {
     setfilteredkadaigal(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    } catch (error) {
+      console.log(error);
+    }
+    
   };
 
   return{

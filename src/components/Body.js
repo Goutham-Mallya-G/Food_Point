@@ -10,8 +10,8 @@ const Body = () => {
 const {
   kadaigal, filteredkadaigal,searchtext,setsearchtext,setfilteredkadaigal
 } = useBody();
-
-  const isOnline = useOnlineStatus();
+console.log(kadaigal);
+const isOnline = useOnlineStatus();
 
   if(isOnline === false)
     return(
