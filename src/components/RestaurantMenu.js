@@ -47,7 +47,7 @@ export const RestaurantMenu = () => {
       <div className="resmenulist">
         <ul>
           {menuCards.map((section,index) => (
-            <div className="mb-8 pb-4 border-b border-gray-100">
+            <div key={index}className="mb-8 pb-4 border-b border-gray-100">
               <div className="bg-gray-200 rounded-xl p-4">
                 <div className="flex justify-between cursor-pointer" onClick={()=>clickhandler(index)}>
                     <h3 className="text-xl font-semibold text-[#2D2D2D] mb-4">{section?.card?.card?.title} ({section.card.card.itemCards.length})</h3>
@@ -55,7 +55,7 @@ export const RestaurantMenu = () => {
                 </div>
                 {showItems === index && (<ul>
                   {section?.card?.card?.itemCards.map((item) => (
-                    (item.card.info.isVeg == 1 ? <VegDishMenu item={item}/> : <MenuDish item={item}/>)
+                    (item.card.info.isVeg == 1 ? <VegDishMenu key={item.card.info.id} item={item}/> : <MenuDish key={item.card.info.id} item={item}/>)
                   ))}
                 </ul>)}
               </div>
