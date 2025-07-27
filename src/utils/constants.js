@@ -5,3 +5,4 @@ export const API = process.env.API;
 export const MENU = process.env.MENU;
 export const foodPic = process.env.foodPic;
 export const foodError = process.env.foodError;
+export const veg = process.env.veg;
