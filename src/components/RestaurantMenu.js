@@ -9,7 +9,7 @@ export const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
   const VegDishMenu = VegDish(MenuDish);
-  const [showItems , setShowItems] = useState(false);
+  const [showItems , setShowItems] = useState(null);
 
   if (resInfo === null)
     return (
@@ -32,8 +32,8 @@ export const RestaurantMenu = () => {
 
   const menuCards  = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((section) => section?.card.card.itemCards);
 
-  const clickhandler = () => {
-    setShowItems(!showItems);
+  const clickhandler = (index) => {
+    setShowItems(showItems === index ? null : index);
   }
 
   return (
@@ -46,14 +46,14 @@ export const RestaurantMenu = () => {
       </div>
       <div className="resmenulist">
         <ul>
-          {menuCards.map((section) => (
+          {menuCards.map((section,index) => (
             <div className="mb-8 pb-4 border-b border-gray-100">
               <div className="bg-gray-200 rounded-xl p-4">
-                <div className="flex justify-between cursor-pointer" onClick={clickhandler}>
+                <div className="flex justify-between cursor-pointer" onClick={()=>clickhandler(index)}>
                     <h3 className="text-xl font-semibold text-[#2D2D2D] mb-4">{section?.card?.card?.title} ({section.card.card.itemCards.length})</h3>
                     <p className="text-2xl">⬇️</p>
                 </div>
-                {showItems && (<ul>
+                {showItems === index && (<ul>
                   {section?.card?.card?.itemCards.map((item) => (
                     (item.card.info.isVeg == 1 ? <VegDishMenu item={item}/> : <MenuDish item={item}/>)
                   ))}
