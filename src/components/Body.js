@@ -14,7 +14,9 @@ const isOnline = useOnlineStatus();
 
   if(isOnline === false)
     return(
-      <h1>Looks like you are offline</h1>
+    <div className="flex justify-center items-center h-screen">
+      <h1 className="text-center text-4xl font-bold">Looks like you are offline</h1>
+    </div>
     )
   return (
     <div className="bg-[#F4F4F2]">

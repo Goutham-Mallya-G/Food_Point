@@ -48,10 +48,10 @@ export const RestaurantMenu = () => {
         <ul>
           {menuCards.map((section,index) => (
             <div key={index}className="mb-8 pb-4 border-b border-gray-100">
-              <div className="bg-gray-200 rounded-xl p-4">
+              <div className="bg-gray-200 rounded-xl p-4 shadow-md">
                 <div className="flex justify-between cursor-pointer" onClick={()=>clickhandler(index)}>
                     <h3 className="text-xl font-semibold text-[#2D2D2D] mb-4">{section?.card?.card?.title} ({section.card.card.itemCards.length})</h3>
-                    <p className="text-2xl">⬇️</p>
+                    <p className="text-2xl">{showItems === index ? "⬆️" : "⬇️"}</p>
                 </div>
                 {showItems === index && (<ul>
                   {section?.card?.card?.itemCards.map((item) => (
