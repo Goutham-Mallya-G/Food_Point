@@ -9,7 +9,7 @@ export const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
   const VegDishMenu = VegDish(MenuDish);
-  const [showItems , setShowItems] = useState(null);
+  const [showItems , setShowItems] = useState(0);
 
   if (resInfo === null)
     return (
