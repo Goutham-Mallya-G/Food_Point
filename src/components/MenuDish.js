@@ -10,8 +10,12 @@ const MenuDish = (props) => {
   const handleDecrement = () => setItemCount(prev => Math.max(prev - 1, 0));
   
   const dispatch = useDispatch();
+
   const handleItem = () =>{
-    dispatch(addItem("pizza"));
+    if(itemCount < 10){
+      dispatch(addItem(item));
+      console.log(item);
+    }
   }
  
   return (
@@ -62,9 +66,9 @@ const MenuDish = (props) => {
             <span className="font-medium cursor-default">{itemCount}</span>
             <button
               className="text-[#E23744] font-bold text-lg cursor-pointer"
-              onClick={()=>{
+              onClick={()=> {
                 handleIncrement();
-                handleItem();
+                  handleItem();
               }}
             >
               +
