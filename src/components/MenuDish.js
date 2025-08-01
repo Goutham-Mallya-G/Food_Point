@@ -1,21 +1,33 @@
 import { foodPic, foodError, veg } from "../utils/constants";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "../utils/Slices/cartSlice";
+import { addItem, removeItems } from "../utils/Slices/cartSlice";
 const MenuDish = (props) => {
   const { item } = props;
   const [itemCount , setItemCount] = useState(0)
-  const handleAdd = () => setItemCount(1);
-  const handleIncrement = () => setItemCount(prev => Math.min(prev + 1 , 10));
-  const handleDecrement = () => setItemCount(prev => Math.max(prev - 1, 0));
-  
   const dispatch = useDispatch();
+  const handleIncrement = () => {
+    setItemCount((prev) =>{
+       const updated = Math.min(prev + 1 , 10);
+       dispatch(addItem({item , count : updated}));
+       return updated;
+      }); 
+  };
+const handleDecrement = () => {
+    setItemCount((prev) => {
+      const updated = Math.max(prev - 1, 0);
+      if(updated === 0){
+        dispatch(removeItems({item}));
+      }else{
+        dispatch(addItem({item , count : updated}));
+      }
+      return updated;
+    });
+}
 
-  const handleItem = () =>{
-    if(itemCount < 10){
-      dispatch(addItem(item));
-      console.log(item);
-    }
+  const handleAdd = () =>{
+      setItemCount(1);
+      dispatch(addItem({item , count : 1}));
   }
  
   return (
@@ -50,7 +62,6 @@ const MenuDish = (props) => {
             className="cursor-pointer bg-[#E23744] text-white py-1 px-6 rounded-md absolute -bottom-3 left-1/2 transform -translate-x-1/2 hover:bg-[#CB313D]"
             onClick={()=>{
                 handleAdd();
-                handleItem();
             }}
           >
             Add
@@ -59,7 +70,9 @@ const MenuDish = (props) => {
           <div className="flex items-center justify-center space-x-3 absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-white border border-gray-300 rounded-md px-3 py-1 shadow">
             <button
               className="text-[#E23744] font-bold text-lg cursor-pointer"
-              onClick={handleDecrement}
+              onClick={()=>{
+                handleDecrement();
+              }}
             >
               −
             </button>
@@ -68,7 +81,6 @@ const MenuDish = (props) => {
               className="text-[#E23744] font-bold text-lg cursor-pointer"
               onClick={()=> {
                 handleIncrement();
-                  handleItem();
               }}
             >
               +
