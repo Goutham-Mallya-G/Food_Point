@@ -66,7 +66,7 @@ const CartDish = (props) => {
             </button>
             </div>
             <div>
-                <h1>{((item?.card?.info?.finalPrice / 100) ||
+                <h1>₹&nbsp;{((item?.card?.info?.finalPrice / 100) ||
                 (item?.card?.info?.price / 100) ||
                 (item?.card?.info?.defaultPrice / 100)) * (itemCount || 0)}</h1>
             </div>
