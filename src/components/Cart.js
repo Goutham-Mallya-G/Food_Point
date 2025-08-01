@@ -34,7 +34,7 @@ const Cart = () => {
         <div className="border-t-2 border-gray-200 mt-6 pt-4">
           <div className="flex justify-between items-center bg-purple-100 rounded-lg p-4">
             <h2 className="text-xl font-bold text-gray-800">Total:</h2>
-            <h2 className="text-2xl font-bold text-[#E23744]">₹{calculateTotal()}</h2>
+            <h2 className="text-2xl font-bold text-[#E23744]">₹{calculateTotal().toFixed(2)}</h2>
           </div>
           <button className="w-full mt-4 bg-[#E23744] text-white py-3 px-6 rounded-lg font-semibold text-lg hover:bg-[#CB313D] transition duration-300 shadow-lg">
             Proceed to Checkout

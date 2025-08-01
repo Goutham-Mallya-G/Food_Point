@@ -8,11 +8,13 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center bg-white shadow-md py-1 sticky top-0 z-50">
       <div className="logo_container">
+        <Link to='/'>
         <img
           className="w-15 h-15 rounded-xl ml-4 object-fill"
           src={LOGO_URL}
           alt="logo"
         />
+        </Link>
       </div>
       <div>
         <ul className="flex gap-6 items-center text-lg text-[#2D2D2D] font-medium">

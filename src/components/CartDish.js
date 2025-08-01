@@ -26,7 +26,11 @@ const CartDish = (props) => {
         }
         return updated;
       });
-  }
+
+    }
+    const price = ((item?.card?.info?.finalPrice / 100) ||
+                (item?.card?.info?.price / 100) ||
+                (item?.card?.info?.defaultPrice / 100)) * (itemCount || 0);
   return (
     <div
           className="flex items-start justify-between bg-purple-50 rounded-xl mb-4 p-4 shadow-md gap-4"
@@ -42,11 +46,11 @@ const CartDish = (props) => {
             />
           </div>
           <ul className="flex-1">
-            <div className="flex gap-x-30">
+            <div className="flex gap-x-26">
             <li className="font-semibold text-lg text-[#2D2D2D] min-w-5/12">
               {item?.card?.info?.name}
             </li>
-            <div className="flex items-center justify-center space-x-3 bg-white border border-gray-300 rounded-md px-3 py-1 shadow max-h-10">
+            <div className="flex items-center justify-center space-x-3 bg-white border border-gray-300 rounded-md px-3 py-1 shadow max-h-10 max-w-20">
                 <button
               className="text-[#E23744] font-bold text-lg cursor-pointer"
               onClick={()=>{
@@ -66,16 +70,11 @@ const CartDish = (props) => {
             </button>
             </div>
             <div>
-                <h1>₹&nbsp;{((item?.card?.info?.finalPrice / 100) ||
-                (item?.card?.info?.price / 100) ||
-                (item?.card?.info?.defaultPrice / 100)) * (itemCount || 0)}</h1>
+                <h1>₹&nbsp;{price.toFixed(2)}</h1>
             </div>
             </div>
             <li className="font-medium">
-              ₹
-              {item?.card?.info?.finalPrice / 100 ||
-                item?.card?.info?.price / 100 ||
-                item?.card?.info?.defaultPrice / 100}
+              ₹{price / itemCount}
             </li>
           </ul>
           <div>
