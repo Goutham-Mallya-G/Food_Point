@@ -8,14 +8,16 @@ const MenuDish = (props) => {
   const dispatch = useDispatch();
   const handleIncrement = () => {
     setItemCount((prev) =>{
-       const updated = Math.min(prev + 1 , 10);
+       const currentCount = Number(prev) || 0;
+       const updated = Math.min(currentCount + 1 , 10);
        dispatch(addItem({item , count : updated}));
        return updated;
       }); 
   };
 const handleDecrement = () => {
     setItemCount((prev) => {
-      const updated = Math.max(prev - 1, 0);
+      const currentCount = Number(prev) || 0;
+      const updated = Math.max(currentCount - 1, 0);
       if(updated === 0){
         dispatch(removeItems({item}));
       }else{

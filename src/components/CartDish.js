@@ -5,18 +5,20 @@ import { addItem, removeItems } from "../utils/Slices/cartSlice";
 
 const CartDish = (props) => {
   const { item } = props;
-  const [itemCount,setItemCount] = useState(item.count);
+  const [itemCount,setItemCount] = useState(item.count || 0);
   const dispatch = useDispatch();
   const handleIncrement = () => {
       setItemCount((prev) =>{
-         const updated = Math.min(prev + 1 , 10);
+         const currentCount = Number(prev) || 0;
+         const updated = Math.min(currentCount + 1 , 10);
          dispatch(addItem({item , count : updated}));
          return updated;
         });
     };  
   const handleDecrement = () => {
       setItemCount((prev) => {
-        const updated = Math.max(prev - 1, 0);
+        const currentCount = Number(prev) || 0;
+        const updated = Math.max(currentCount - 1, 0);
         if(updated === 0){
           dispatch(removeItems({item}));
         }else{
@@ -53,7 +55,7 @@ const CartDish = (props) => {
             >
               −
             </button>
-            <span className="font-medium cursor-default">{item.count}</span>
+            <span className="font-medium cursor-default">{itemCount || 0}</span>
             <button
               className="text-[#E23744] font-bold text-lg cursor-pointer"
               onClick={()=> {
@@ -64,9 +66,9 @@ const CartDish = (props) => {
             </button>
             </div>
             <div>
-                <h1>{(item?.card?.info?.finalPrice / 100) * itemCount||
-                (item?.card?.info?.price / 100) * itemCount ||
-                (item?.card?.info?.defaultPrice / 100) * itemCount}</h1>
+                <h1>{((item?.card?.info?.finalPrice / 100) ||
+                (item?.card?.info?.price / 100) ||
+                (item?.card?.info?.defaultPrice / 100)) * (itemCount || 0)}</h1>
             </div>
             </div>
             <li className="font-medium">
