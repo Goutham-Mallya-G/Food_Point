@@ -51,7 +51,10 @@ const router = createBrowserRouter([
     ],
     errorElement: <Error />,
   },
-]);
+],
+{
+    basename: "/foodpoint",
+  });
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(<RouterProvider router={router} />);
