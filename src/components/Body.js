@@ -63,7 +63,12 @@ const isOnline = useOnlineStatus();
           </button>
         </div>
       </div>
-      {kadaigal.length === 0 ? (
+      {kadaigal=== undefined ? (
+       <div className="h-screen mt-auto flex flex-wrap justify-center">
+         <p className="flex justify-center items-center text-2xl">Sorry, No shops available at the moment</p>
+        </div>
+      ):
+      kadaigal.length === 0 ? (
         <div className="flex flex-wrap justify-center">
           {schimmercard.map((card) => {
             return <Schimmer key={card} />;
