@@ -1,5 +1,6 @@
 import{useState , useEffect} from "react";
 import { API } from "./constants";
+import axios from "axios";
 
 const useBody = () => {
   const [kadaigal, setKadaigal] = useState([]);
@@ -14,14 +15,12 @@ const useBody = () => {
 
   const fetchData = async () => {
     try {
-      const data = await fetch(API);
-
-    const json = await data.json();
+      const json = await axios.get("http://localhost:8000/api");
     setKadaigal(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setfilteredkadaigal(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     } catch (error) {
       console.log(error);

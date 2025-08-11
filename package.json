@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "This is were i learn react from aksay saini",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "frontend": "parcel index.html",
+    "backend": "nodemon backend.js",
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "build": "parcel build index.html",
+    "buildBe": "node backend.js"
   },
   "repository": {
     "type": "git",
@@ -23,21 +26,29 @@
   "homepage": "https://github.com/Goutham-Mallya-G/React#readme",
   "devDependencies": {
     "buffer": "^6.0.3",
+    "concurrently": "^9.2.0",
     "crypto-browserify": "^3.12.1",
     "events": "^3.3.0",
     "os-browserify": "^0.3.0",
     "parcel": "^2.15.4",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
+    "querystring-es3": "^0.2.1",
     "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "string_decoder": "^1.3.0",
+    "url": "^0.11.4",
     "vm-browserify": "^1.1.2"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/postcss": "^4.1.10",
     "autoprefixer": "^10.4.21",
+    "axios": "^1.11.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",

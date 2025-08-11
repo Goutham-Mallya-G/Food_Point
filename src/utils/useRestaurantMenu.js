@@ -1,16 +1,17 @@
 import { useState,useEffect } from "react";
-import { MENU} from "./constants";
+import axios from "axios";
 
 const useRestaurantMenu = (resId) => {
     const[resInfo , setResInfo] = useState(null);
         useEffect(() => {
-            fetchMenu();
-        },[]);
+            if(resId){
+                fetchMenu();
+            }
+        },[resId]);
 
     const fetchMenu = async () => {
-        const data = await fetch(MENU + resId)
-        const json = await data.json();
-        setResInfo(json.data);
+        const {data} = await axios.get(`http://localhost:8000/menu/${resId}`);
+        setResInfo(data);
     }
     return resInfo;
 }

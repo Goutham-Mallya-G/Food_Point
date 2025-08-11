@@ -3,7 +3,6 @@ import CartDish from "./CartDish";
 import {Link} from "react-router-dom";
 const Cart = () => {
   const cartItems = useSelector((slice) => slice.cart.items);
-  console.log(cartItems);
   
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {

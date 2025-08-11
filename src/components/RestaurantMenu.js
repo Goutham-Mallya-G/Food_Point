@@ -28,9 +28,9 @@ export const RestaurantMenu = () => {
       </div>
     );
 
-  const { name, cuisines, avgRating } = resInfo?.cards[2]?.card?.card?.info;
+  const { name, cuisines, avgRating } = resInfo?.data?.cards[2]?.card?.card?.info;
 
-  const menuCards  = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((section) => section?.card.card.itemCards);
+  const menuCards  = resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((section) => section?.card.card.itemCards);
 
   const clickhandler = (index) => {
     setShowItems(showItems === index ? null : index);
